@@ -1,35 +1,41 @@
-# UNITY_RL_CAR_HAND_TRACKING-
+# ĐỀ TÀI 8.3: Hệ thống Nhận diện Hành động và Tương tác VR bằng AI (Action Recognition)
 
+Dự án này tích hợp AI để phân tích chuyển động cơ thể từ camera, từ đó nhận diện hành động và điều khiển tương tác trong môi trường thực tế ảo (VR) sử dụng Unity.
 
+## 🚀 Tính Năng Chính
+- **Full-body Pose Estimation**: Sử dụng **MediaPipe Tasks API** để trích xuất 33 điểm neo (landmarks) trên cơ thể theo thời gian thực.
+- **Action Recognition (LSTM)**: Nhận diện các hành động phức tạp theo chuỗi thời gian sử dụng mô hình Deep Learning LSTM (TensorFlow/Keras). Các hành động mặc định: `Idle`, `Walk Forward`, `Walk Backward`, `Turn Left`, `Turn Right`, `Stop`, `Jump`.
+- **Anomaly Detection**: Hệ thống theo dõi vận tốc và sự thay đổi đột ngột của cơ thể để phát hiện các hành vi bất thường (rất hữu ích trong giám sát/an ninh).
+- **Action Prediction**: Dự đoán hành động tiếp theo của người dùng dựa trên chuỗi lịch sử hành động.
+- **VR Interaction Bridge**: Kết nối thời gian thực với Unity thông qua giao thức UDP (Peaceful-pie), ánh xạ trực tiếp hành động AI sang chuyển động trong game/VR.
 
+## 🛠 Cài Đặt & Sử Dụng
 
+### Yêu Cầu Hệ Thống
+- Python 3.11+
+- Unity 6000.4.4f1 (hoặc tương đương)
+- Webcam
 
-https://github.com/Nirab123456/UNITY_RL_CAR_HAND_TRACKING-/assets/128963796/cacaad08-12cb-492b-bd36-3fc42d2d3ef6
+### Khởi Chạy Nhanh
+Chỉ cần chạy file tự động:
+```powershell
+start_game.bat
+```
+File script sẽ tự động tìm Unity Editor, khởi động Project và bật AI Controller.
 
+*(Lưu ý: Bạn phải nhấn nút Play trong Unity trước khi hệ thống AI có thể kết nối thành công).*
 
+### Huấn Luyện AI Thủ Công (Thu Thập Dữ Liệu)
+Nếu bạn muốn hệ thống nhận diện chính xác chuyển động cơ thể của riêng bạn:
+1. Chạy `python data_collector.py` để ghi hình các cử chỉ.
+2. Chạy `python train_lstm.py` để huấn luyện lại mô hình LSTM dựa trên dữ liệu vừa thu thập.
 
+## 🧠 Công Nghệ Sử Dụng
+- **Python**: TensorFlow, Keras, OpenCV, MediaPipe, Scikit-learn
+- **Unity (C#)**: UDP Sockets, NavMesh, VR Simulation
 
-
-
-
-
-
-
-
-https://github.com/Nirab123456/UNITY_RL_CAR_HAND_TRACKING-/assets/128963796/e49128d0-3387-4c33-ac7f-e3ee50612da7
-
-
-
-
-Description:
-This project, Unity Car Manipulation via MediaPipe or Computer Vision, merges computer vision and Unity to develop an interactive car manipulation experience using hand gestures. It is an interdisciplinary project combining Python, C#, and MediaPipe's hand-tracking technology to enable a user to manipulate virtual objects in Unity based on real-world hand movements captured through a webcam.
-
-In this project, the Python component utilizes MediaPipe to detect hand landmarks via a webcam in real time. These hand gestures are then converted into commands that control objects within the Unity environment. The primary application developed in this project involves manipulating a car within the Unity game engine, allowing users to move and rotate the car or interact with other virtual objects without using traditional input devices like keyboards or game controllers.
-
-Some technical highlights of the project include:
-
-Real-Time Hand Detection: Using MediaPipe, the system tracks hand landmarks and recognizes gestures such as pointing, grabbing, or moving the hand in specific directions.
-Unity Integration: The detected gestures are transmitted to Unity, where they control the virtual car, providing a seamless interaction between the real world and the game world.
-Cross-Platform Development: The project involves integrating Python scripts for computer vision processing and C# scripts for object manipulation in Unity, offering a powerful example of how these technologies can work together.
-The project demonstrates the potential of combining hand-tracking computer vision techniques with Unity for immersive, gesture-based interactions in virtual environments. It is ideal for applications in gaming, simulation, or even automotive design.
-
+## 📌 Điểm Mới & Ứng Dụng
+Hệ thống này tăng cường tính **"Natural Interaction"** (Tương tác tự nhiên) trong VR, cho phép người chơi sử dụng toàn bộ cơ thể thay vì Controller truyền thống. Rất tiềm năng cho các ứng dụng:
+- VR Gaming & Fitness (Thể dục thực tế ảo)
+- VR Training (Huấn luyện kỹ năng)
+- Hệ thống cảnh báo an ninh thông minh (Anomaly Detection)
